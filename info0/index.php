@@ -70,18 +70,10 @@
 
         $('document').ready(() => {
             const lang = getUrlParameter('lang');
-            var new_lang = 'sv';
-            switch (lang) {
-                case 'en':
-                    new_lang = 'fi';
-                    break;
-                case 'sv':
-                    new_lang = 'en';
-                    break;
-                case 'fi': default:
-                    new_lang = 'sv';
-                    break;
-            }
+            const new_lang =
+                lang === 'en' ?
+                    'fi' : lang === 'sv' ?
+                        'en' : 'sv';
 
             setTimeout(() => {
                window.location.href = window.location.pathname + '?' + $.param({'lang': new_lang}); 
