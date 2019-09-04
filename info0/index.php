@@ -53,11 +53,25 @@
         </div>
 
         <br />
-        <div id="open-time">
-            10:30 - 15:00
-        </div>
+        <div id="open-time"></div>
     </body>
     <script>
+        function setOpenTime() {
+            const divSelector = $('#open-time');
+            const currentDay = new Date().getDay();
+            switch (currentDay) {
+                case 0: case 6:
+                    divSelector.text('');
+                    break;
+                case 3:
+                    divSelector.text('10:30 - 17:30');
+                    break;
+                default:
+                    divSelector.text('10:30 - 15:00');
+                    break;
+            };
+        };
+
         // Interval for when the page should update the page language, in ms
         const changeInterval = 20000;
 
@@ -69,6 +83,8 @@
         };
 
         $('document').ready(() => {
+            setOpenTime();
+
             const lang = getUrlParameter('lang');
             const new_lang =
                 lang === 'en' ?
