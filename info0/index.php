@@ -53,22 +53,38 @@
         </div>
 
         <br />
-        <div id="open-time">
-            10:30 - 15:00
-        </div>
+        <div id="open-time"></div>
     </body>
     <script>
+        function setOpenTime() {
+            const divSelector = $('#open-time');
+            const currentDay = new Date().getDay();
+            switch (currentDay) {
+                case 0: case 6:  // Weekends closed
+                    divSelector.text('');
+                    break;
+                case 3:  // Closes later on Wednesdays
+                    divSelector.text('10:30 - 17:30');
+                    break;
+                default:
+                    divSelector.text('10:30 - 15:00');
+                    break;
+            };
+        };
+
         // Interval for when the page should update the page language, in ms
         const changeInterval = 20000;
 
         function getUrlParameter(name) {
             name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
             return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         };
 
         $('document').ready(() => {
+            setOpenTime();
+
             const lang = getUrlParameter('lang');
             const new_lang =
                 lang === 'en' ?
