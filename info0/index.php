@@ -60,10 +60,10 @@
             const divSelector = $('#open-time');
             const currentDay = new Date().getDay();
             switch (currentDay) {
-                case 0: case 6:
+                case 0: case 6:  // Weekends closed
                     divSelector.text('');
                     break;
-                case 3:
+                case 3:  // Closes later on Wednesdays
                     divSelector.text('10:30 - 17:30');
                     break;
                 default:
