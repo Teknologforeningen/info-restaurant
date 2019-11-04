@@ -19,6 +19,7 @@
             }
             div#open-time {
                 font-size: 1.5em;
+                font-weight: bold;
             }
         </style>
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
@@ -48,7 +49,7 @@
                 $exploded = explode("\n", $menu_string);
 
                 foreach ($exploded as $menu_item) { ?>
-                    <p><?php echo $menu_item ?></p>
+                    <p><strong><?php echo $menu_item ?></strong></p>
             <?php } ?>
         </div>
 
